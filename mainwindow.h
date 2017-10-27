@@ -10,21 +10,40 @@ namespace Ui {
 class MainWindow;
 }
 
+enum GenOp {
+  NOISE,
+  SMOOTHNOISE,
+  TURBULENCE,
+  CLOUD,
+  MARBLE
+};
+
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+  Q_OBJECT
 
-protected:
+  protected:
     void resizeEvent(QResizeEvent *event) override;
 
-public:
+  public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-private slots:
-    void on_generate_clicked();
+  private slots:
+    void on_buttonGenerate_clicked();
 
-private:
+    void on_radioNoise_toggled(bool checked);
+
+    void on_radioSmooth_toggled(bool checked);
+
+    void on_radioTurbulence_toggled(bool checked);
+
+    void on_radioCloud_toggled(bool checked);
+
+    void on_radioMarble_toggled(bool checked);
+
+  private:
+    GenOp op;
     Ui::MainWindow *ui;
     std::shared_ptr<Noise> noise;
     QGraphicsScene *scene;
