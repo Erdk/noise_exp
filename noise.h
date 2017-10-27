@@ -1,5 +1,5 @@
-#ifndef PERLIN_H
-#define PERLIN_H
+#ifndef NOISE_H
+#define NOISE_H
 
 #include <vector>
 #include <cmath>
@@ -107,4 +107,4 @@ class Noise {
     }
 };
 
-#endif // PERLIN_H
+#endif // NOISE_H

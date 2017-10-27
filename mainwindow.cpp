@@ -47,6 +47,7 @@ void MainWindow::on_buttonGenerate_clicked()
   const int height = 128 * 8;
   const int width = 128 * 8;
 
+  // create pixmap which we populate and present on QGraphicsScene & *View
   QPixmap p(width, height);
   QPainter *paint = new QPainter(&p);
 
@@ -83,6 +84,7 @@ void MainWindow::on_buttonGenerate_clicked()
     }
   }
 
+  // accoridng to stackoverflow, need to check
   delete paint;
   scene->addPixmap(p);
   ui->noisePreview->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);

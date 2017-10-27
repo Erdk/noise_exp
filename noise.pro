@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = perlin
+TARGET = noise
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -30,7 +30,7 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-        perlin.h
+        noise.h
 
 FORMS += \
         mainwindow.ui

@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <memory>
-#include "perlin.h"
+#include "noise.h"
 
 namespace Ui {
 class MainWindow;
