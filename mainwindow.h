@@ -1,22 +1,17 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <memory>
+
 #include <QMainWindow>
 #include <QGraphicsScene>
-#include <memory>
+#include <QGroupBox>
+
 #include "noise.h"
 
 namespace Ui {
 class MainWindow;
 }
-
-enum GenOp {
-  NOISE,
-  SMOOTHNOISE,
-  TURBULENCE,
-  CLOUD,
-  MARBLE
-};
 
 class MainWindow : public QMainWindow
 {
@@ -26,11 +21,13 @@ class MainWindow : public QMainWindow
     void resizeEvent(QResizeEvent *event) override;
 
   public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow() override;
 
   private slots:
     void on_buttonGenerate_clicked();
+
+    void on_buttonSave_clicked();
 
     void on_radioNoise_toggled(bool checked);
 
@@ -43,10 +40,18 @@ class MainWindow : public QMainWindow
     void on_radioMarble_toggled(bool checked);
 
   private:
-    GenOp op;
-    Ui::MainWindow *ui;
+    Ui::MainWindow* ui;
+    QGraphicsScene* scene;
+    QGroupBox* noiseOptions;
+
+    // noise generator
+    NoiseType op;
     std::shared_ptr<Noise> noise;
-    QGraphicsScene *scene;
+
+    // object with generated noise
+    QPixmap p;
+
+    void clearNoiseOptions();
 };
 
 #endif // MAINWINDOW_H

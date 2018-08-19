@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QRadioButton>
 #include <QGraphicsView>
+#include <QFileDialog>
 
 #if 0
 #define DEBUG
@@ -29,6 +30,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
   // check default radio box
   ui->radioNoise->setChecked(true);
+
+  noiseOptions = ui->noiseOptions;
 }
 
 MainWindow::~MainWindow()
@@ -48,7 +51,7 @@ void MainWindow::on_buttonGenerate_clicked()
   const int width = 128 * 8;
 
   // create pixmap which we populate and present on QGraphicsScene & *View
-  QPixmap p(width, height);
+  p = QPixmap(width, height);
   QPainter *paint = new QPainter(&p);
 
   noise->generateNoise();
@@ -76,7 +79,7 @@ void MainWindow::on_buttonGenerate_clicked()
           break;
 
         case MARBLE:
-          paint->setPen(noise->getMarble(scaledY, scaledX));
+          paint->setPen(noise->getMarble(scaledY, scaledX, 5.0, 10.0, 5.0, 32.0));
           break;
       }
 
@@ -88,6 +91,15 @@ void MainWindow::on_buttonGenerate_clicked()
   delete paint;
   scene->addPixmap(p);
   ui->noisePreview->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+}
+
+void MainWindow::on_buttonSave_clicked() {
+  QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "noise.png", tr("Images (*.png *.xpm *.jpg)"));
+  p.save(fileName);
+}
+
+void MainWindow::clearNoiseOptions() {
+  this->noiseOptions->setLayout(nullptr);
 }
 
 void MainWindow::on_radioNoise_toggled(bool checked) {

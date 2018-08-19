@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>551</height>
+    <width>600</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,7 +53,7 @@
          <item>
           <widget class="QRadioButton" name="radioNoise">
            <property name="text">
-            <string>noise</string>
+            <string>&amp;noise</string>
            </property>
           </widget>
          </item>
@@ -81,7 +81,7 @@
          <item>
           <widget class="QRadioButton" name="radioMarble">
            <property name="text">
-            <string>marble</string>
+            <string>&amp;marble</string>
            </property>
           </widget>
          </item>
@@ -89,9 +89,26 @@
        </widget>
       </item>
       <item>
+       <widget class="QGroupBox" name="noiseOptions">
+        <property name="title">
+         <string>Options</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="buttonGenerate">
         <property name="text">
          <string>Generate</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonSave">
+        <property name="text">
+         <string>Save</string>
         </property>
        </widget>
       </item>
